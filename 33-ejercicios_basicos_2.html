@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios Básicos 2/10</title>
+  </head>
+  <body>
+    <h1>Ejercicios Básicos 2/10</h1>
+    <script>
+      /* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+      6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+      7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+      8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5. */
+
+      // 5
+      const invertirPalabras = (palabra = "") => {
+        let resultadoFinal = "";
+        if (!palabra) console.warn("No has introducido ninguna palabra");
+        else {
+          for (let i = palabra.length - 1; i >= 0; i--)
+            resultadoFinal += palabra[i];
+          console.log(resultadoFinal);
+        }
+      };
+      invertirPalabras("Hola Mundo");
+
+      // 6
+      const repeticionPalabra = (texto = "", palabra = "") => {
+        if (!texto) console.warn("No has introducido el texto al que buscar");
+
+        if (!palabra)
+          console.warn("No has puesto ninguna palabra que buscar en el texto");
+        else {
+          let textoDividido = texto.split(" ");
+          let contador = 0;
+          textoDividido.forEach((val) => {
+            if (val === palabra) contador += 1;
+          });
+          console.info(
+            `La palabra ${palabra} se ha encontrado ${contador} veces en el texto`
+          );
+        }
+      };
+      repeticionPalabra("hola mundo adios mundo", "mundo");
+
+      // 7
+      const esPalíndromo = (palabra = "") => {
+        if (!palabra) console.warn("No has introducido ninguna palabra");
+        else {
+          let palabraInvertida = "";
+          palabra = palabra.toLocaleLowerCase();
+          for (let i = palabra.length - 1; i >= 0; i--)
+            palabraInvertida += palabra[i];
+
+          palabra === palabraInvertida
+            ? console.info(true)
+            : console.info(false);
+        }
+        console.info();
+      };
+      esPalíndromo("Salas");
+
+      // 8
+      const ignorarPatron = (texto = "", patron = "") => {
+        let result = "";
+        if (!texto) console.warn("No has introducido ningún texto");
+
+        if (!patron) console.warn("No has introducido ningún patrón");
+        else {
+          for (let i = 0; i < texto.length; i++)
+            texto.substring(i, i + patron.length) === patron
+              ? (i += patron.length - 1)
+              : (result += texto[i]);
+
+          console.info(result);
+        }
+      };
+
+      ignorarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+    </script>
+  </body>
+</html>
