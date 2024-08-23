@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios Básicos 4/10</title>
+  </head>
+  <body>
+    <h1>Ejercicios Básicos 4/10</h1>
+    <script>
+      /* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+      13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
+      14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F. */
+
+      const esPrimo = (n = 0) => {
+        if (!n) return console.warn("No se ha introducido nungún valor");
+
+        if (typeof n !== "number")
+          return console.error("Ha introducido un dato no válido");
+
+        Math.abs(n);
+        for (let i = 2; i < n; i++) if (n % i === 0) return console.info(false);
+
+        return console.info(true);
+      };
+      esPrimo();
+      esPrimo({ hola: "¡Hola buemas!", adios: "¡Adiós muy buenas!" });
+      esPrimo(7);
+
+      const esPar = (n = 0) => {
+        if (!n)
+          return console.warn("No se ha introducido ningún valor a comprovar");
+
+        if (typeof n !== "number")
+          return console.error("El tipo de dato introducido es incorrecto");
+
+        n % 2 === 0 ? console.info("Par") : console.info("Impar");
+      };
+      esPar();
+      esPar("Hola");
+      esPar(2);
+      esPar(-2);
+      esPar(11);
+
+      const convertirGrados = (grados = 0, tipo = "") => {
+        if (!grados)
+          return console.warn("No ha introducido la cantidad de grados");
+
+        if (typeof grados !== "number")
+          return console.error(
+            "No ha introducido un número de grados correcto"
+          );
+
+        if (!tipo) return console.warn("No ha introducido el tipo de grados");
+
+        if (typeof tipo !== "string" || (tipo !== "C" && tipo !== "F"))
+          return console.error(
+            "No ha introducido un tipo de grados correcto, el formato es (C o F)"
+          );
+
+        tipo === "C"
+          ? console.info(`${Math.round(grados * 1.8 + 32)}ºF`)
+          : console.info(`${Math.round((grados - 32) / 1.8)}ºC`);
+      };
+      convertirGrados();
+      convertirGrados(2);
+      convertirGrados([], 1);
+      convertirGrados(31, "C");
+      convertirGrados(88, "F");
+    </script>
+  </body>
+</html>
